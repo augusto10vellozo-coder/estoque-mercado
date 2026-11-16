@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Estoque — Mercado</title>
+<link rel="stylesheet" href="/app.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <strong>Estoque</strong>
+    <span>mercado</span>
+  </div>
+  <nav id="tabs">
+    <button data-tab="estoque" class="ativo">Estoque</button>
+    <button data-tab="receber">Receber</button>
+    <button data-tab="produtos">Produtos</button>
+    <button data-tab="movimentos">Movimentos</button>
+  </nav>
+  <button id="btn-exportar" class="ghost" title="Baixa o estoque em CSV para o painel">Exportar</button>
+</header>
+
+<main>
+  <!-- ESTOQUE -->
+  <section id="tab-estoque" class="tab ativo">
+    <div class="kpis" id="kpis"></div>
+
+    <div class="card">
+      <div class="card-head">
+        <h2>Posição de estoque</h2>
+        <input id="busca-estoque" type="search" placeholder="Buscar produto ou código…">
+      </div>
+      <div id="tabela-estoque"></div>
+    </div>
+  </section>
+
+  <!-- RECEBER -->
+  <section id="tab-receber" class="tab">
+    <div class="card">
+      <div class="card-head">
+        <h2>Receber mercadoria</h2>
+        <button id="btn-limpar" class="ghost">Limpar</button>
+      </div>
+
+      <div class="form-grid">
+        <label>Fornecedor
+          <select id="fornecedor"></select>
+        </label>
+        <label>Ou novo fornecedor
+          <input id="novo-fornecedor" placeholder="Nome do fornecedor">
+        </label>
+        <label>Data
+          <input id="data-compra" type="date">
+        </label>
+        <label>Documento / nota
+          <input id="documento" placeholder="Nº da nota ou pedido">
+        </label>
+        <label>Vencimento (opcional)
+          <input id="vencimento" type="date">
+        </label>
+      </div>
+
+      <div class="scan-box">
+        <label for="ean">Código de barras</label>
+        <input id="ean" autocomplete="off" inputmode="numeric" placeholder="Bipe o produto e pressione Enter" autofocus>
+        <small>O leitor USB digita e dá Enter sozinho. Se o código não existir, abre o cadastro.</small>
+      </div>
+
+      <div class="busca-produto">
+        <input id="busca-receber" type="search" placeholder="Ou busque pelo nome do produto…">
+        <div id="resultado-busca" class="resultado"></div>
+      </div>
+
+      <div id="carrinho"></div>
+
+      <div class="total-bar">
+        <span>Total da compra</span>
+        <strong id="total-compra">R$ 0,00</strong>
+        <button id="btn-confirmar" class="primary" disabled>Confirmar recebimento</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUTOS -->
+  <section id="tab-produtos" class="tab">
+    <div class="card">
+      <div class="card-head">
+        <h2>Produtos</h2>
+        <div class="acoes">
+          <input id="busca-produtos" type="search" placeholder="Buscar…">
+          <button id="btn-novo" class="primary">Novo produto</button>
+        </div>
+      </div>
+      <div id="tabela-produtos"></div>
+    </div>
+  </section>
+
+  <!-- MOVIMENTOS -->
+  <section id="tab-movimentos" class="tab">
+    <div class="card">
+      <div class="card-head">
+        <h2>Movimentos</h2>
+        <input id="busca-mov" type="search" placeholder="Filtrar por produto…">
+      </div>
+      <div id="tabela-movimentos"></div>
+    </div>
+  </section>
+</main>
+
+<!-- Modal de produto -->
+<div id="modal" class="modal escondido">
+  <div class="modal-box">
+    <h2 id="modal-titulo">Novo produto</h2>
+    <form id="form-produto">
+      <input type="hidden" id="f-id">
+      <label>Código de barras / EAN
+        <input id="f-ean" autocomplete="off" placeholder="Bipe ou digite">
+      </label>
+      <label>Nome
+        <input id="f-nome" required placeholder="Ex.: Arroz Branco 5kg">
+      </label>
+      <div class="duas">
+        <label>Unidade
+          <input id="f-unidade" value="un" placeholder="un, kg, cx">
+        </label>
+        <label>Categoria
+          <input id="f-categoria" placeholder="Mercearia">
+        </label>
+      </div>
+      <div class="duas">
+        <label>Estoque mínimo
+          <input id="f-minimo" type="number" step="0.001" min="0" value="0">
+        </label>
+        <label>Ponto de pedido
+          <input id="f-ponto" type="number" step="0.001" min="0" placeholder="mínimo × 1,5">
+        </label>
+      </div>
+      <label>Custo médio
+        <input id="f-custo" type="number" step="0.01" min="0" value="0">
+      </label>
+      <div class="modal-acoes">
+        <button type="button" id="modal-cancelar" class="ghost">Cancelar</button>
+        <button type="submit" class="primary">Salvar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div id="toast" class="toast"></div>
+<script src="/app.js"></script>
+</body>
+</html>

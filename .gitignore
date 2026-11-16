@@ -1,0 +1,17 @@
+# Dependências
+node_modules
+
+# Banco local com dados da loja
+dados/*.db
+dados/*.db-journal
+dados/*.db-wal
+dados/*.db-shm
+
+# Exportações
+estoque.csv
+contas.csv
+
+# Sistema
+*.log
+.DS_Store
+Thumbs.db

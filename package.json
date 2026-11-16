@@ -1,0 +1,13 @@
+{
+  "name": "estoque-mercado",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Núcleo operacional de estoque para mercado pequeno: recebimento por código de barras, livro de movimentos e alerta de reposição.",
+  "main": "server.cjs",
+  "scripts": {
+    "seed": "node seed.cjs",
+    "start": "node server.cjs",
+    "test": "node test/run.cjs"
+  },
+  "license": "UNLICENSED"
+}
