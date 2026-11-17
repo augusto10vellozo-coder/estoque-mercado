@@ -1,5 +1,7 @@
 # Estoque do Mercado
 
+[![CI](https://github.com/augusto10vellozo-coder/estoque-mercado/actions/workflows/ci.yml/badge.svg)](https://github.com/augusto10vellozo-coder/estoque-mercado/actions/workflows/ci.yml)
+
 Núcleo operacional de estoque para mercado pequeno. Roda no PC da loja, abre no navegador e funciona na rede local (PC, tablet, celular). Sem internet, sem nuvem, sem mensalidade.
 
 O `painel-mercado` continua sendo a camada de relatório; este projeto é o **sistema que escreve** os dados.
