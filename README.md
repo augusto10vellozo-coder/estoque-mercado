@@ -4,6 +4,8 @@ Núcleo operacional de estoque para mercado pequeno. Roda no PC da loja, abre no
 
 O `painel-mercado` continua sendo a camada de relatório; este projeto é o **sistema que escreve** os dados.
 
+![Tela de estoque do Estoque do Mercado](docs/painel-estoque.jpg)
+
 ## Como rodar
 
 ```bash
